@@ -42,5 +42,34 @@
             order.Id = 42;
             return CreatedAtAction( nameof( Get ), new { id = order.Id }, order );
         }
+
+        /// <summary>
+        /// Thing v1
+        /// </summary>
+        /// <returns>Thing v2</returns>
+        [HttpGet]
+        [Route("thing")]
+        [MapToApiVersion("0.9")]
+        [Produces( "application/json" )]
+        [ProducesResponseType( typeof( Order ), 200 )]
+        public IActionResult GetThingV1()
+        {
+            return Ok( "Thing v1" );
+        }
+
+        /// <summary>
+        /// Thing v2
+        /// </summary>
+        /// <returns>Thing v2</returns>
+        [HttpGet]
+        [Route("thing")]
+        [MapToApiVersion("1.0")]
+        [Produces( "application/json" )]
+        [ProducesResponseType( typeof( Order ), 200 )]
+        public IActionResult GetThingV2()
+        {
+            return Ok( "Thing v2" );
+        }
+
     }
 }
